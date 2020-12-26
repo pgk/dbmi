@@ -22,6 +22,12 @@ const (
 	migrationSeparator string = "/*DOWN*/"
 	programName        string = "dbmi"
 	version            string = "1.0.0"
+	configExample      string = `{
+	"db_connection": "postgres://<user>:<pass>@<host>/<yourdbname>?sslmode=disable",
+	"db_dbmi_folder": "./migrations",
+	"db_dbmi_tablename": "db_migrations"
+}
+`
 )
 
 type Config struct {
@@ -36,6 +42,7 @@ func usage() {
 	fmt.Printf("\tinit\t\t\t\tInitialize migrations\n")
 	fmt.Printf("\tnew <name>\t\t\tCreate a new migration <name>\n")
 	fmt.Printf("\tmigrate <up|down> [amount=all]\tMigrate <direction> by <amount>\n")
+	fmt.Printf("\texampleconf\t\t\tEcho the contents of an example config file\n")
 	fmt.Printf("\tversion\t\t\t\tDisplay version information\n")
 	fmt.Printf("\tusage\t\t\t\tDisplay this message and exit.\n")
 	flag.PrintDefaults() // prints default usage
@@ -44,6 +51,11 @@ func usage() {
 
 func ver() {
 	fmt.Printf("%s v%s\n", programName, version)
+}
+
+func exampleConfig() error {
+	fmt.Printf(configExample)
+	return nil
 }
 
 func defaultConfig() *Config {
@@ -392,6 +404,9 @@ func main() {
 	switch command {
 	case "version":
 		ver()
+		break
+	case "exampleconf":
+		exampleConfig()
 		break
 	case "init":
 		if err := dbmig.InitMigrations(); err != nil {
