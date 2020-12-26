@@ -25,9 +25,9 @@ const (
 )
 
 type Config struct {
-	Folder           string `json:"folder"`
-	ConnectionString string `json:"connection"`
-	Tablename        string `json:"tablename"`
+	Folder           string `json:"db_dbmi_folder"`
+	ConnectionString string `json:"db_connection"`
+	Tablename        string `json:"db_dbmi_tablename"`
 }
 
 func usage() {
@@ -36,6 +36,7 @@ func usage() {
 	fmt.Printf("\tinit\t\t\t\tInitialize migrations\n")
 	fmt.Printf("\tnew <name>\t\t\tCreate a new migration <name>\n")
 	fmt.Printf("\tmigrate <up|down> [amount=all]\tMigrate <direction> by <amount>\n")
+	fmt.Printf("\tversion\t\t\t\tDisplay version information\n")
 	fmt.Printf("\tusage\t\t\t\tDisplay this message and exit.\n")
 	flag.PrintDefaults() // prints default usage
 	fmt.Printf("\n")
