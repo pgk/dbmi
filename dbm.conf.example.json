@@ -1,5 +1,0 @@
-{
-	"db_connection": "postgres://<user>:<pass>@<host>/<yourdbname>?sslmode=disable",
-	"db_dbmi_folder": "./migrations",
-	"db_dbmi_tablename": "db_migrations"
-}

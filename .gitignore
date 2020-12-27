@@ -1,4 +1,5 @@
 env
+dbmi.conf.json
 tags
 migrations
 dbmi
@@ -109,4 +110,3 @@ Temporary Items
 # </genignore linux>
 
 
-dbm.conf.json
