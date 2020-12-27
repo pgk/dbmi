@@ -367,7 +367,7 @@ func main() {
 	var configFile string
 	var help bool
 
-	flag.StringVar(&configFile, "c", "dbm.conf.json", "Change default config file")
+	flag.StringVar(&configFile, "c", "dbmi.conf.json", "Change default config file")
 	flag.BoolVar(&help, "h", false, "Get help")
 	flag.Usage = usage
 	flag.Parse()
