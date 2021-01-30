@@ -64,19 +64,32 @@ func defaultConfig() *Config {
 }
 
 func NewConfigFromFile(f string) (*Config, error) {
-	jsonFile, err := os.Open(f)
-	if err != nil {
-		return nil, err
-	}
-
-	defer jsonFile.Close()
-	byteValue, err := ioutil.ReadAll(jsonFile)
-	if err != nil {
-		return nil, err
-	}
-
 	config := defaultConfig()
-	json.Unmarshal([]byte(byteValue), &config)
+	jsonFile, err := os.Open(f)
+
+	if err == nil {
+		defer jsonFile.Close()
+		byteValue, err := ioutil.ReadAll(jsonFile)
+		if err == nil {
+			json.Unmarshal([]byte(byteValue), &config)
+		}
+	}
+
+	val, ok := os.LookupEnv("DB_CONNECTION")
+	if ok && val != "" {
+		config.ConnectionString = val
+	}
+
+	val, ok = os.LookupEnv("DB_DBMI_FOLDER")
+	if ok && val != "" {
+		config.Folder = val
+	}
+
+	val, ok = os.LookupEnv("DB_DBMI_TABLENAME")
+	if ok && val != "" {
+		config.Tablename = val
+	}
+
 	return config, nil
 }
 
