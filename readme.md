@@ -1,6 +1,6 @@
 # dbmi
 
-Simple Postgres schema migrations.
+Simple Postgres db schema migrations.
 
 ## Examples
 
@@ -22,6 +22,17 @@ Create a new migration
 ```
 dbmi new 'create items table'
 ```
+
+A new file is created in you migrations folder:
+
+```sql
+-- put your up-migration here.
+/*DOWN*/
+-- put your down-migration here.
+
+```
+
+Now fill in your schema change and the change that reverses it.
 
 Migrate
 
