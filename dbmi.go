@@ -59,7 +59,7 @@ func exampleConfig() error {
 }
 
 func defaultConfig() *Config {
-	config := Config{ConnectionString: "postgres://example:pass@localhost/tablename?ssl-mode=disable", Folder: "./migrations", Tablename: "migrations"}
+	config := Config{ConnectionString: "postgres://example:pass@localhost/dbname?ssl-mode=disable", Folder: "./migrations", Tablename: "migrations"}
 	return &config
 }
 
